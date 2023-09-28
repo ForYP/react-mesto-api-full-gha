@@ -1,0 +1,7 @@
+.element__reaction-counter{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    color: black;
+    justify-content: center;
+}

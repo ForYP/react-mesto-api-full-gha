@@ -1,0 +1,18 @@
+.element__like{
+    width: 22px;
+    height: 19px;
+    background: url(../../../images/like.svg) center no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    flex-shrink: 0;
+}
+.element__like:hover{
+    opacity: 0.5;
+}
+/* @media (hover: hover){
+    button:hover{
+        opacity: 0.6;
+    }
+} */

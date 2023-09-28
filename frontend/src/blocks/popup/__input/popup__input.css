@@ -1,0 +1,16 @@
+.popup__input{
+    max-width: 358px;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+.popup__input:nth-child(2){
+    margin-bottom: 40px;
+}
+
+.popup__input::placeholder{
+    color: #C4C4C4;
+}

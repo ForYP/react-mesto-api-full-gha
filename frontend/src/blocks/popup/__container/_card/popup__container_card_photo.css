@@ -1,0 +1,19 @@
+.popup__container_card_photo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: none;
+    width: auto;
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+@media screen and (max-width: 540px) {
+    .popup__container_card_photo{
+        box-sizing: border-box;
+        max-width: none;
+        padding: 0;
+    }
+}
