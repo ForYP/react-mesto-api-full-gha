@@ -10,6 +10,7 @@
 
 # production
 /build
+build
 
 # misc
 .DS_Store
@@ -18,6 +19,23 @@
 .env.test.local
 .env.production.local
 
+.env
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependency directory
+node_modules
+
+# Optional npm cache directory
+.npm
+
+# Optional REPL history
+.idea
+.vscode
