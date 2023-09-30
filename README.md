@@ -7,8 +7,8 @@
 
 ## Ссылки на проект
 
-[IP-адрес x.x.x.x](84.201.137.241)
+IP-адрес 84.201.137.241
 
-[Frontend https://...](https://s-mesto.nomoredomainsrocks.ru)
+Frontend https://s-mesto.nomoredomainsrocks.ru
 
-[Backend https://...](https://api.s-mesto.nomoredomainsrocks.ru)
+Backend https://api.s-mesto.nomoredomainsrocks.ru
