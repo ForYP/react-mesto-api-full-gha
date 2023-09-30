@@ -7,7 +7,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 84.201.137.241
+IP 84.201.137.241
 
 Frontend https://s-mesto.nomoredomainsrocks.ru
 
