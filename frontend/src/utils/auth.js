@@ -1,4 +1,5 @@
-export const BASE_URL = 'https://localhost:3000';
+// export const BASE_URL = 'https://api.s-mesto.nomoredomainsrocks.ru';
+import { BASE_URL} from './utils';
 
 const getResponse = (res) => {
   if (res.ok) {
@@ -34,7 +35,7 @@ export const checkToken = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
     },
   }).then(getResponse);
 };

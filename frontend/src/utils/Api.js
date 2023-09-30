@@ -1,6 +1,4 @@
-import { BASE_URL,
-  //  API_KEY 
-  } from './utils';
+import { BASE_URL, jwt } from './utils';
 
 class Api {
   constructor(config) {
@@ -86,13 +84,12 @@ class Api {
     }
   }
 }
-
 const api = new Api({
   url: BASE_URL,
-  // headers: {
-  //   authorization: API_KEY,
-  //   'Content-Type': 'application/json'
-  // }
+  headers: {
+    Authorization: `Bearer ${jwt}`,
+    "Content-Type": "application/json",
+  }
 })
 
 export default api;

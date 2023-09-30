@@ -41,6 +41,64 @@ function App() {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
+    handleCheckToken();
+  }, []);
+
+  function handleCheckToken() {
+    const jwt = localStorage.getItem('token');
+    if (jwt) {
+      auth.checkToken(jwt)
+        .then(res => {
+          if (res) {
+            setLoggedIn(true);
+            setEmail(res.email); // setEmail(res.data.email);
+            navigate('/', { replace: true });
+          }
+
+        })
+        .catch(console.error)
+    }
+  }
+
+  function handleRegister({ password, email }) {
+    auth.register(password, email)
+      .then((data) => {
+        if (data) {
+          setIsSuccess(true);
+          navigate('/sign-in', { replace: true });
+        }
+      })
+      .catch((err) => {
+        setIsSuccess(false);
+        console.log(err);
+      })
+      .finally(() => setIsInfoTooltipPopupOpen(true));
+  }
+
+  function handleLogin({ password, email }) {
+    auth.authorize(password, email)
+      .then((res) => {
+        if (res.token) {
+          localStorage.setItem('token', res.token);
+          setLoggedIn(true);
+          setEmail(email);
+          navigate('/', { replace: true });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        setIsInfoTooltipPopupOpen(true);
+        setIsSuccess(false);
+      })
+  }
+
+  function handleSignOut() {
+    setLoggedIn(false);
+    localStorage.removeItem('token');
+    navigate('/sign-in');
+  };
+
+  useEffect(() => {
     if (loggedIn) {
       Promise.all([api.getUserInfo(), api.getInitialCards()])
         .then(([user, cards]) => {
@@ -50,10 +108,6 @@ function App() {
         .catch(console.error)
     }
   }, [loggedIn]);
-
-  useEffect(() => {
-    handleCheckToken();
-  }, []);
 
   function handleCardLike(card) {
     const isLiked = card.likes.some((c) => c._id === currentUser._id);
@@ -109,61 +163,6 @@ function App() {
       .catch(console.error)
       .finally(() => setIsAddPlaceLoading(false))
   }
-
-  function handleCheckToken() {
-    const jwt = localStorage.getItem('token');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then(res => {
-          if (res) {
-            setLoggedIn(true);
-            setEmail(res.data.email);
-            navigate('/', { replace: true });
-          }
-
-        })
-        .catch(console.error)
-    }
-  }
-
-  function handleRegister({ password, email }) {
-    auth.register( password, email)
-      .then((data) => {
-        if (data) {
-          setIsSuccess(true);
-          navigate('/sign-in', { replace: true });
-        }
-      })
-      .catch((err) => {
-        setIsSuccess(false);
-        console.log(err);
-      })
-      .finally(() => setIsInfoTooltipPopupOpen(true));
-  }
-
-  function handleLogin({ password, email }) {
-    auth.authorize(password, email)
-      .then((res) => {
-        if (res.token) {
-          localStorage.setItem('token', res.token);
-          setLoggedIn(true);
-          setEmail(email);
-          navigate('/', { replace: true });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setIsInfoTooltipPopupOpen(true);
-        setIsSuccess(false);
-      })
-  }
-
-  function handleSignOut() {
-    setLoggedIn(false);
-    localStorage.removeItem('token');
-    navigate('/sign-in');
-  };
-
 
   function handleOpenCardDeletePopup(card) {
     setIsDeleteCardPopupOpen(true);
