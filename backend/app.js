@@ -31,6 +31,7 @@ app.get('/crash-test', () => {
 });
 
 mongoose.connect(DB_URL);
+
 app.use('/', require('./routes/index'));
 
 app.use(errorLogger); // подключаем логгер ошибок
