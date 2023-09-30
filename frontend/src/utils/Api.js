@@ -18,6 +18,9 @@ class Api {
     return fetch(url, options).then(this._checkResponse)
   }
 
+  setToken (token) {
+    this._headers.Authorization = `Bearer ${token}`
+  }
 
   getInitialCards () {
     return this._request(`${this._url}/cards`, {

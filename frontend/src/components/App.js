@@ -80,6 +80,7 @@ function App() {
       .then((res) => {
         if (res.token) {
           localStorage.setItem('token', res.token);
+          api.setToken(res.token);
           setLoggedIn(true);
           setEmail(email);
           navigate('/', { replace: true });
@@ -110,7 +111,7 @@ function App() {
   }, [loggedIn]);
 
   function handleCardLike(card) {
-    const isLiked = card.likes.some((c) => c._id === currentUser._id);
+    const isLiked = card.likes.some((c) => c === currentUser._id);
     return api.changeLikeCardStatus(card, isLiked)
       .then((newCard) => {
         setCards((state) =>
