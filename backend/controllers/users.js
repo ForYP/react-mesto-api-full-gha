@@ -5,7 +5,10 @@ const BadRequestError = require('../errors/BadRequest');
 const NotFoundError = require('../errors/NotFound');
 const ConflictError = require('../errors/Conflict');
 
-const { NODE_ENV, JWT_SECRET } = process.env;
+const {
+  NODE_ENV = 'development',
+  JWT_SECRET = 'development',
+} = process.env;
 console.log(NODE_ENV);
 console.log(JWT_SECRET);
 
@@ -97,7 +100,8 @@ module.exports.updateAvatar = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-
+  console.log(NODE_ENV);
+  console.log(JWT_SECRET);
   return User.findUserByCredentials(email, password)
     .then((user) => {
       // создадим токен
