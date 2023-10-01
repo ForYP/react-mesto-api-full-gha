@@ -13,7 +13,7 @@ signupRouter.post('/', celebrate({
     }),
     email: Joi.string().required().email(),
     password: Joi.string().required(),
-  }).unknown(true),
+  }),
 }), createUser);
 
 module.exports = signupRouter;
