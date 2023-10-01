@@ -9,8 +9,6 @@ const {
   NODE_ENV = 'development',
   JWT_SECRET = 'development',
 } = process.env;
-console.log(NODE_ENV);
-console.log(JWT_SECRET);
 
 module.exports.getUsers = (req, res, next) => {
   User.find({})
@@ -100,8 +98,7 @@ module.exports.updateAvatar = (req, res, next) => {
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
-  console.log(NODE_ENV);
-  console.log(JWT_SECRET);
+
   return User.findUserByCredentials(email, password)
     .then((user) => {
       // создадим токен

@@ -5,8 +5,6 @@ const {
   NODE_ENV = 'development',
   JWT_SECRET = 'development',
 } = process.env;
-console.log(NODE_ENV);
-console.log(JWT_SECRET);
 
 const auth = (req, res, next) => {
   const { authorization } = req.headers;
