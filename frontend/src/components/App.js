@@ -41,24 +41,22 @@ function App() {
   const [email, setEmail] = useState('');
 
   useEffect(() => {
+    function handleCheckToken() {
+      const jwt = localStorage.getItem('token');
+      if (jwt) {
+        auth.checkToken(jwt)
+          .then(res => {
+            if (res) {
+              setLoggedIn(true);
+              setEmail(res.email);
+              navigate('/', { replace: true });
+            }
+          })
+          .catch(console.error)
+      }
+    };
     handleCheckToken();
-  }, []);
-
-  function handleCheckToken() {
-    const jwt = localStorage.getItem('token');
-    if (jwt) {
-      auth.checkToken(jwt)
-        .then(res => {
-          if (res) {
-            setLoggedIn(true);
-            setEmail(res.email); // setEmail(res.data.email);
-            navigate('/', { replace: true });
-          }
-
-        })
-        .catch(console.error)
-    }
-  }
+  }, [navigate]);
 
   function handleRegister({ password, email }) {
     auth.register(password, email)

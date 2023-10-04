@@ -1,12 +1,9 @@
-// export const BASE_URL = 'https://api.s-mesto.nomoredomainsrocks.ru';
 import { BASE_URL} from './utils';
 
 const getResponse = (res) => {
   if (res.ok) {
-    console.log(res);
     return res.json();
   }
-  console.log(res);
   return Promise.reject(`Ошибка: ${res.status}`);
 };
 

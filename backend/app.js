@@ -20,12 +20,6 @@ app.use(helmet());
 app.use(requestLogger); // подключаем логгер запросов
 app.use(limiter);
 
-app.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-});
-
 mongoose.connect(DB_URL);
 
 app.use('/', require('./routes/index'));
